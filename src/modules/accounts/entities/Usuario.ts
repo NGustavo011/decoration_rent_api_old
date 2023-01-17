@@ -1,5 +1,3 @@
-import { v4 as uuidV4 } from "uuid";
-
 class Usuario {
     id?: string;
     nome: string;
@@ -10,10 +8,6 @@ class Usuario {
     verificado: boolean;
     criacao: Date;
     pedidos;
-
-    constructor() {
-        if (!this.id) this.id = uuidV4();
-    }
 }
 
 export { Usuario };

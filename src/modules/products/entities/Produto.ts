@@ -1,4 +1,5 @@
-import { v4 as uuidV4 } from "uuid";
+import { Categoria } from "../../categorys/entities/Categoria";
+import { Tema } from "../../themes/entities/Tema";
 
 class Produto {
     id?: string;
@@ -6,18 +7,12 @@ class Produto {
     descricao: string;
     precoBruto: number;
     precoLiquido: number;
-    email: string;
-    admin: boolean;
     criacao: Date;
     imagemUrl: string;
     categoria_id: string;
-    categoria;
+    categoria: Categoria;
     tema_id: string;
-    tema;
-
-    constructor() {
-        if (!this.id) this.id = uuidV4();
-    }
+    tema: Tema;
 }
 
 export { Produto };

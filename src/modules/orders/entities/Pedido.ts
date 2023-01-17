@@ -1,4 +1,3 @@
-import { v4 as uuidV4 } from "uuid";
 import { Usuario } from "../../accounts/entities/Usuario";
 
 class Pedido {
@@ -10,10 +9,6 @@ class Pedido {
     status: string;
     total: number;
     produtos_pedido;
-
-    constructor() {
-        if (!this.id) this.id = uuidV4();
-    }
 }
 
 export { Pedido };

@@ -10,3 +10,65 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Usuario {
+  id         String   @id @default(uuid())
+  nome       String
+  sobrenome  String
+  email      String   @unique
+  senha      String
+  admin      Boolean
+  verificado Boolean
+  criacao    DateTime @default(now())
+  pedidos    Pedido[] @relation(name: "PedidosUsuario")
+}
+
+model Pedido {
+  id              String           @id @default(uuid())
+  usuario_id      String
+  usuario         Usuario          @relation(name: "PedidosUsuario", fields: [usuario_id], references: [id])
+  criacao         DateTime         @default(now())
+  atualizacao     DateTime
+  status          String
+  total           Float
+  produtos_pedido ProdutosPedido[]
+}
+
+model ProdutosPedido {
+  id          String   @id @default(uuid())
+  produto     Json
+  quantidade  Int
+  criacao     DateTime @default(now())
+  atualizacao DateTime
+  pedidoId    String
+  pedido      Pedido   @relation(fields: [pedidoId], references: [id])
+}
+
+model Produto {
+  id           String    @id @default(uuid())
+  nome         String
+  descricao    Float
+  precoBruto   Float
+  precoLiquido Float
+  criacao      DateTime  @default(now())
+  imagemUrl    String
+  categoria_id String
+  categoria    Categoria @relation(fields: [categoria_id], references: [id])
+  tema_id      String
+  tema         Tema      @relation(fields: [tema_id], references: [id])
+}
+
+model Categoria {
+  id        String    @id @default(uuid())
+  nome      String
+  descricao String
+  criacao   DateTime  @default(now())
+  produtos  Produto[]
+}
+
+model Tema {
+  id        String    @id @default(uuid())
+  nome      String
+  descricao String
+  criacao   DateTime  @default(now())
+  produtos  Produto[]
+}
