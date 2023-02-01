@@ -5,7 +5,7 @@ class Categoria {
     nome: string;
     descricao: string;
     criacao: Date;
-    produtos: Produto[];
+    produtos?: Produto[];
 }
 
 export { Categoria };

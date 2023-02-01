@@ -39,18 +39,18 @@ model ProdutosPedido {
   quantidade  Int
   criacao     DateTime @default(now())
   atualizacao DateTime
-  pedidoId    String
-  pedido      Pedido   @relation(fields: [pedidoId], references: [id])
+  pedido_id    String
+  pedido      Pedido   @relation(fields: [pedido_id], references: [id])
 }
 
 model Produto {
   id           String    @id @default(uuid())
   nome         String
-  descricao    Float
-  precoBruto   Float
-  precoLiquido Float
+  descricao    String
+  preco_bruto   Float
+  preco_liquido Float
   criacao      DateTime  @default(now())
-  imagemUrl    String
+  imagem_url    String
   categoria_id String
   categoria    Categoria @relation(fields: [categoria_id], references: [id])
   tema_id      String

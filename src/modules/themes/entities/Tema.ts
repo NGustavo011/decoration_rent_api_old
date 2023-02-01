@@ -6,7 +6,7 @@ class Tema {
     nome: string;
     descricao: string;
     criacao: Date;
-    produtos: Produto[];
+    produtos?: Produto[];
 
     constructor() {
         if (!this.id) this.id = uuidV4();

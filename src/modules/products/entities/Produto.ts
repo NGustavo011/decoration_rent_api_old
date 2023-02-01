@@ -1,18 +1,19 @@
 import { Categoria } from "../../categorys/entities/Categoria";
 import { Tema } from "../../themes/entities/Tema";
 
-class Produto {
-    id?: string;
+class ProdutoBase {
     nome: string;
     descricao: string;
-    precoBruto: number;
-    precoLiquido: number;
-    criacao: Date;
-    imagemUrl: string;
+    preco_bruto: number;
+    preco_liquido: number;
+    imagem_url: string;
     categoria_id: string;
-    categoria: Categoria;
     tema_id: string;
-    tema: Tema;
 }
 
-export { Produto };
+class ProdutoCreated extends ProdutoBase {
+    id: string;
+    criacao: Date;
+}
+
+export { ProdutoBase, ProdutoCreated };

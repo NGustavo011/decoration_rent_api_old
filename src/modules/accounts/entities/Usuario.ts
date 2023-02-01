@@ -1,3 +1,5 @@
+import { Pedido } from "../../orders/entities/Pedido";
+
 class Usuario {
     id?: string;
     nome: string;
@@ -7,7 +9,7 @@ class Usuario {
     admin: boolean;
     verificado: boolean;
     criacao: Date;
-    pedidos;
+    pedidos: Pedido[];
 }
 
 export { Usuario };
