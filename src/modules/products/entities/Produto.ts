@@ -1,6 +1,3 @@
-import { Categoria } from "../../categorys/entities/Categoria";
-import { Tema } from "../../themes/entities/Tema";
-
 class ProdutoBase {
     nome: string;
     descricao: string;
@@ -11,9 +8,11 @@ class ProdutoBase {
     tema_id: string;
 }
 
-class ProdutoCreated extends ProdutoBase {
+type ProdutoBaseOptional = Partial<ProdutoBase>;
+
+class ProdutoBD extends ProdutoBase {
     id: string;
     criacao: Date;
 }
 
-export { ProdutoBase, ProdutoCreated };
+export { ProdutoBase, ProdutoBaseOptional, ProdutoBD };

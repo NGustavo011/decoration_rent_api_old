@@ -1,7 +1,7 @@
 import { PrismaClient, Produto } from "@prisma/client";
 import { ProdutosInterfaceRepository } from "../ProdutosInterfaceRepository";
 import { prisma } from "../../../../database";
-import { ProdutoBase, ProdutoCreated } from "../../entities/Produto";
+import { ProdutoBase, ProdutoBD } from "../../entities/Produto";
 import { Categoria } from "../../../categorys/entities/Categoria";
 
 class ProdutosRepository implements ProdutosInterfaceRepository {
@@ -11,13 +11,13 @@ class ProdutosRepository implements ProdutosInterfaceRepository {
         this.repository = prisma;
     }
 
-    async list(): Promise<ProdutoCreated[]> {
+    async list(): Promise<ProdutoBD[]> {
         return await this.repository.produto.findMany({
             include: { categoria: true, tema: true },
         });
     }
 
-    async create(produto: ProdutoBase): Promise<ProdutoCreated> {
+    async create(produto: ProdutoBase): Promise<ProdutoBD> {
         return await this.repository.produto.create({
             data: produto,
         });
