@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { TemasInterfaceRepository } from "../TemasInterfaceRepository";
 import { prisma } from "../../../../database";
-import { TemaBase, TemaBD } from "../../entities/Tema";
+import { TemaBase, TemaBaseOptional, TemaBD } from "../../entities/Tema";
 
 class TemasRepository implements TemasInterfaceRepository {
     private repository: PrismaClient;
@@ -20,7 +20,7 @@ class TemasRepository implements TemasInterfaceRepository {
         });
     }
 
-    async update(id: string, tema: Partial<TemaBase>): Promise<TemaBD> {
+    async update(id: string, tema: TemaBaseOptional): Promise<TemaBD> {
         return await this.repository.tema.update({
             where: { id },
             data: tema,

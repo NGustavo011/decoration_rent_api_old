@@ -1,3 +1,6 @@
+import { CategoriaBD } from "../../categorys/entities/Categoria";
+import { TemaBD } from "../../themes/entities/Tema";
+
 class ProdutoBase {
     nome: string;
     descricao: string;
@@ -15,4 +18,9 @@ class ProdutoBD extends ProdutoBase {
     criacao: Date;
 }
 
-export { ProdutoBase, ProdutoBaseOptional, ProdutoBD };
+class ProdutoCompletedBD extends ProdutoBD {
+    categoria: CategoriaBD;
+    tema: TemaBD;
+}
+
+export { ProdutoBase, ProdutoBaseOptional, ProdutoBD, ProdutoCompletedBD };

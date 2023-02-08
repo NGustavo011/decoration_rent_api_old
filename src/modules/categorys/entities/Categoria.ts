@@ -1,11 +1,13 @@
-import { Produto } from "../../products/entities/Produto";
-
-class Categoria {
-    id?: string;
+class CategoriaBase {
     nome: string;
     descricao: string;
-    criacao: Date;
-    produtos?: Produto[];
 }
 
-export { Categoria };
+type CategoriaBaseOptional = Partial<CategoriaBase>;
+
+class CategoriaBD extends CategoriaBase {
+    id: string;
+    criacao: Date;
+}
+
+export { CategoriaBase, CategoriaBaseOptional, CategoriaBD };
